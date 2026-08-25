@@ -14,3 +14,4 @@ Anti Generic UI styles, use simple and modern UI, not generic AI/Colorful UI sty
 - Implemented low-level Win32 keyboard hook for global shortcuts.
 - Implemented topmost flyout OSD overlay and main synchronization interface.
 - Removed Ctrl + (+/-) hotkeys from brightness control to prevent conflict with standard browser/system zoom shortcuts.
+- Added project documentation in README.md.
