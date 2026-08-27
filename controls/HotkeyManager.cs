@@ -37,7 +37,9 @@ namespace KeyboardControl.Controls
         private const int VK_LWIN = 0x5B;
         private const int VK_RWIN = 0x5C;
 
+        private const int VK_LEFT = 0x25;
         private const int VK_UP = 0x26;
+        private const int VK_RIGHT = 0x27;
         private const int VK_DOWN = 0x28;
         private const int VK_OEM_PLUS = 0xBB;
         private const int VK_ADD = 0x6B;
@@ -74,9 +76,21 @@ namespace KeyboardControl.Controls
                 bool isAlt = IsAltPressed();
                 bool isCtrl = IsCtrlPressed();
 
-                // 1. Volume Hotkeys: Alt + (+/- or Up/Down)
+                // 1. Alt Hotkeys:
+                // - Brightness: Alt + (Left/Right)
+                // - Volume: Alt + (+/- or Up/Down)
                 if (isAlt && !isCtrl)
                 {
+                    if (vkCode == VK_RIGHT)
+                    {
+                        ThreadPool.QueueUserWorkItem(delegate { IncreaseBrightness(); });
+                        return (IntPtr)1;
+                    }
+                    if (vkCode == VK_LEFT)
+                    {
+                        ThreadPool.QueueUserWorkItem(delegate { DecreaseBrightness(); });
+                        return (IntPtr)1;
+                    }
                     if (vkCode == VK_OEM_PLUS || vkCode == VK_ADD || vkCode == VK_UP)
                     {
                         ThreadPool.QueueUserWorkItem(delegate { IncreaseVolume(); });
@@ -88,15 +102,16 @@ namespace KeyboardControl.Controls
                         return (IntPtr)1;
                     }
                 }
-                // 2. Brightness Hotkeys: Ctrl + (] / [ or Up/Down)
+                // 2. Ctrl Hotkeys:
+                // - Brightness: Ctrl + (] / [)
                 else if (isCtrl && !isAlt)
                 {
-                    if (vkCode == VK_OEM_6 || vkCode == VK_UP)
+                    if (vkCode == VK_OEM_6)
                     {
                         ThreadPool.QueueUserWorkItem(delegate { IncreaseBrightness(); });
                         return (IntPtr)1;
                     }
-                    if (vkCode == VK_OEM_4 || vkCode == VK_DOWN)
+                    if (vkCode == VK_OEM_4)
                     {
                         ThreadPool.QueueUserWorkItem(delegate { DecreaseBrightness(); });
                         return (IntPtr)1;

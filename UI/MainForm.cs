@@ -71,7 +71,7 @@ namespace KeyboardControl.UI
             // ==========================================
             var brightnessGroup = new GroupBox
             {
-                Text = " Kontrol Kecerahan Layar (Ctrl+[ / Ctrl+] / Ctrl+↑ / Ctrl+↓) ",
+                Text = " Kontrol Kecerahan Layar (Alt+← / Alt+→ / Ctrl+[ / Ctrl+]) ",
                 Dock = DockStyle.Fill,
                 Padding = new Padding(10, 8, 10, 8)
             };

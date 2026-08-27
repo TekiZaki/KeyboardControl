@@ -1,4 +1,4 @@
-﻿# KeyboardControl
+# KeyboardControl
 
 A lightweight Windows utility for global volume and screen brightness control via keyboard shortcuts with a non-intrusive on-screen display (OSD) flyout.
 
@@ -7,8 +7,8 @@ Targeted at Windows 10/11 running .NET Framework 4.8 with zero external SDK depe
 ## Shortcuts
 
 ### Screen Brightness
-- **Increase Brightness:** Ctrl + ] or Ctrl + Up Arrow
-- **Decrease Brightness:** Ctrl + [ or Ctrl + Down Arrow
+- **Increase Brightness:** `Alt + Right Arrow` or `Ctrl + ]`
+- **Decrease Brightness:** `Alt + Left Arrow` or `Ctrl + [`
 
 ### Master Volume
 - **Increase Volume:** Alt + = (or Alt + +, Alt + Up Arrow)
