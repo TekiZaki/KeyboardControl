@@ -18,7 +18,7 @@ if not exist "%CSC%" (
     exit /b 1
 )
 
-"%CSC%" /nologo /target:winexe /optimize+ /unsafe /out:bin\Release\KeyboardControl.exe /r:System.dll,System.Core.dll,System.Drawing.dll,System.Management.dll,System.Windows.Forms.dll Program.cs Controls\BrightnessControl.cs Controls\HotkeyManager.cs Controls\VolumeControl.cs UI\FlyoutOsd.cs UI\MainForm.cs
+"%CSC%" /nologo /target:winexe /optimize+ /unsafe /win32icon:app.ico /out:bin\Release\KeyboardControl.exe /r:System.dll,System.Core.dll,System.Drawing.dll,System.Management.dll,System.Windows.Forms.dll Program.cs Controls\BrightnessControl.cs Controls\HotkeyManager.cs Controls\VolumeControl.cs UI\FlyoutOsd.cs UI\MainForm.cs
 
 if %ERRORLEVEL% equ 0 (
     echo [SUCCESS] Built executable at bin\Release\KeyboardControl.exe

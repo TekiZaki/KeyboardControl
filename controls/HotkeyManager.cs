@@ -4,7 +4,7 @@
 // - Role: Input handling component.
 // - Used by: MainForm.
 // - Depends on: user32.dll, VolumeControl, BrightnessControl.
-// - Key Responsibilities: Non-blocking capture of Alt and Ctrl shortcuts for volume/brightness increments.
+// - Key Responsibilities: Non-blocking capture of Alt arrow shortcuts for volume and brightness.
 // - Notes: Uses WH_KEYBOARD_LL low-level Windows hook with asynchronous dispatch.
 // ---
 
@@ -41,12 +41,6 @@ namespace KeyboardControl.Controls
         private const int VK_UP = 0x26;
         private const int VK_RIGHT = 0x27;
         private const int VK_DOWN = 0x28;
-        private const int VK_OEM_PLUS = 0xBB;
-        private const int VK_ADD = 0x6B;
-        private const int VK_OEM_MINUS = 0xBD;
-        private const int VK_SUBTRACT = 0x6D;
-        private const int VK_OEM_4 = 0xDB; // [ and {
-        private const int VK_OEM_6 = 0xDD; // ] and }
 
         private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
         private LowLevelKeyboardProc _proc;
@@ -76,9 +70,9 @@ namespace KeyboardControl.Controls
                 bool isAlt = IsAltPressed();
                 bool isCtrl = IsCtrlPressed();
 
-                // 1. Alt Hotkeys:
-                // - Brightness: Alt + (Left/Right)
-                // - Volume: Alt + (+/- or Up/Down)
+                // Alt Arrow Hotkeys:
+                // - Brightness: Alt + (Right/Left)
+                // - Volume: Alt + (Up/Down)
                 if (isAlt && !isCtrl)
                 {
                     if (vkCode == VK_RIGHT)
@@ -91,29 +85,14 @@ namespace KeyboardControl.Controls
                         ThreadPool.QueueUserWorkItem(delegate { DecreaseBrightness(); });
                         return (IntPtr)1;
                     }
-                    if (vkCode == VK_OEM_PLUS || vkCode == VK_ADD || vkCode == VK_UP)
+                    if (vkCode == VK_UP)
                     {
                         ThreadPool.QueueUserWorkItem(delegate { IncreaseVolume(); });
                         return (IntPtr)1;
                     }
-                    if (vkCode == VK_OEM_MINUS || vkCode == VK_SUBTRACT || vkCode == VK_DOWN)
+                    if (vkCode == VK_DOWN)
                     {
                         ThreadPool.QueueUserWorkItem(delegate { DecreaseVolume(); });
-                        return (IntPtr)1;
-                    }
-                }
-                // 2. Ctrl Hotkeys:
-                // - Brightness: Ctrl + (] / [)
-                else if (isCtrl && !isAlt)
-                {
-                    if (vkCode == VK_OEM_6)
-                    {
-                        ThreadPool.QueueUserWorkItem(delegate { IncreaseBrightness(); });
-                        return (IntPtr)1;
-                    }
-                    if (vkCode == VK_OEM_4)
-                    {
-                        ThreadPool.QueueUserWorkItem(delegate { DecreaseBrightness(); });
                         return (IntPtr)1;
                     }
                 }

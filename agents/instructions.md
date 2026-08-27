@@ -16,3 +16,4 @@ Anti Generic UI styles, use simple and modern UI, not generic AI/Colorful UI sty
 - Removed Ctrl + (+/-) hotkeys from brightness control to prevent conflict with standard browser/system zoom shortcuts.
 - Added project documentation in README.md.
 - Changed brightness arrow hotkeys from Ctrl + Up/Down to Alt + Left/Right to avoid interfering with text navigation.
+- Added application icon (app.ico) and simplified shortcuts to Alt + Up/Down (Volume) and Alt + Right/Left (Brightness), removing all Ctrl and +/- shortcuts.

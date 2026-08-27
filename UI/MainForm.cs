@@ -55,6 +55,22 @@ namespace KeyboardControl.UI
             StartPosition = FormStartPosition.CenterScreen;
             Font = new Font("Segoe UI", 9F, FontStyle.Regular);
 
+            try
+            {
+                var iconPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "app.ico");
+                if (System.IO.File.Exists(iconPath))
+                {
+                    Icon = new Icon(iconPath);
+                }
+                else
+                {
+                    Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+                }
+            }
+            catch
+            {
+            }
+
             var rootLayout = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -71,7 +87,7 @@ namespace KeyboardControl.UI
             // ==========================================
             var brightnessGroup = new GroupBox
             {
-                Text = " Kontrol Kecerahan Layar (Alt+← / Alt+→ / Ctrl+[ / Ctrl+]) ",
+                Text = " Kontrol Kecerahan Layar (Alt+← / Alt+→) ",
                 Dock = DockStyle.Fill,
                 Padding = new Padding(10, 8, 10, 8)
             };
@@ -158,7 +174,7 @@ namespace KeyboardControl.UI
             // ==========================================
             var volumeGroup = new GroupBox
             {
-                Text = " Kontrol Volume Suara (Alt+- / Alt+= / Alt+↑ / Alt+↓) ",
+                Text = " Kontrol Volume Suara (Alt+↑ / Alt+↓) ",
                 Dock = DockStyle.Fill,
                 Padding = new Padding(10, 8, 10, 8)
             };

@@ -7,12 +7,12 @@ Targeted at Windows 10/11 running .NET Framework 4.8 with zero external SDK depe
 ## Shortcuts
 
 ### Screen Brightness
-- **Increase Brightness:** `Alt + Right Arrow` or `Ctrl + ]`
-- **Decrease Brightness:** `Alt + Left Arrow` or `Ctrl + [`
+- **Increase Brightness:** `Alt + Right Arrow`
+- **Decrease Brightness:** `Alt + Left Arrow`
 
 ### Master Volume
-- **Increase Volume:** Alt + = (or Alt + +, Alt + Up Arrow)
-- **Decrease Volume:** Alt + - (or Alt + Down Arrow)
+- **Increase Volume:** `Alt + Up Arrow`
+- **Decrease Volume:** `Alt + Down Arrow`
 
 ## Features
 
